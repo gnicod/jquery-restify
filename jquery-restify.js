@@ -1,5 +1,4 @@
 (function($){
-    "use strict";
 	var defaults = {
 		//TODO reprendre tous les params  de la method $.ajax()
 		root     : "",
@@ -58,12 +57,22 @@
 					field[this.name] = $(this).val();
 				}
 			});
-			$(this.form).find("input[type='checkbox']:checked").each(function(){
-				if(field[this.name]===undefined){
-					field[this.name] = [];
+			$(this.form).find("input[type='checkbox']").each(function(){
+				if(this.name.substr(this.name.length - 2)==="[]"){
+					var na = this.name.substr(0,this.name.length-2);
+					if(field[na]===undefined){
+						field[na] = [];
+					}
 				}
 				if($.inArray(this.name,_this.options.excluded)<0){
-					field[this.name].push($(this).val());
+					if(this.name.substr(this.name.length - 2)==="[]"){
+						if($(this).is(":checked")){
+							var na = this.name.substr(0,this.name.length-2);
+							field[na].push($(this).val());
+						}
+					}else{
+						field[this.name] = $(this).is(":checked") ? 1 : 0;
+					}
 				}
 			});
 			json[this.options.root] = field;
