@@ -31,3 +31,21 @@ HTTP method. Default is the ***method*** parameter of the form
 array of string. Elements with name in this array will not be jsonify nor send
 ###callback
 callback function
+###append
+object to append to json
+
+Form validation
+-------
+```javascript
+$('#formid').restify({
+	"fields":{
+		"#field1": {
+			"required" : false,
+			"regexp":{"pattern":"([a-zA-Z0-9])","message":"Should contains only alphanumeric caracters"},
+			"custom":{"fn":"nameChck","message":"Should contains at least 5 characters"},
+			"min-length":5,
+			"max-length":10
+		}
+	}
+});
+```
