@@ -1,12 +1,10 @@
-//TODO quand deja un message d'erreur, l'effacer quand c'est ok et pouvoir en remettre un autre
-//TODO pouvoir append un object au json
 (function($){
     "use strict";
 	var defaults = {
 		//TODO reprendre tous les params  de la method $.ajax()
 		root     : "",
 		fields : {}, //de la forme "fields":{ "#name": { "message":"Doit etre full", "validator":"booleanFunctionName"} }
-		excluded : [],//TODO field not have to be send
+		excluded : [],
 		append : [],
 		//ajax part
 		url      : "",
