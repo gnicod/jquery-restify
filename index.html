@@ -1,0 +1,54 @@
+<html>
+    <head>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="form-restify.js"></script>
+		<link rel="stylesheet" href="form-restify.css" />
+		<script type="text/javascript">
+			var nameChck = function(elm){
+				return elm.val().length > 5;
+			}
+			var objToAppend = {"lol":["jj","hu"]};
+			$(document).ready(function(){
+					$('#formid').restify({
+						"fields":{
+							"#banner": {
+								"required" : false,
+								"regexp":{"pattern":"([a-zA-Z0-9]{2,6})","message":"Should contains only alphanumeric caracters"},
+								"custom":{"fn":"nameChck","message":"Should contains at least 5 caracters"},
+								"max-length":6,
+								"max-length":5
+							}
+						},
+						"append":{
+								"objToAp" : objToAppend
+						}
+					});
+			});
+		</script>
+	</head>
+	<body>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		
+		<div>
+			<form id="formid" action="/ajax" name="user" method="PUT">
+				<p><input id="banner" name="banner"  type="text" value="banner"/></p>
+				<p><input id="campaign" name="campaign" type="text" value="campaign"/></p>
+				<p><input name="check" type="checkbox" value="aa"/>aa</p>
+				<p><input name="check" type="checkbox" value="bb"/>bb</p>
+				<p><input name="check" type="checkbox" value="cc"/>cc</p>
+				<p><input type="radio" name="isvideo" value="1">Yes</p>
+				<p><input type="radio" name="isvideo" value="0">No</p>
+				<p><select id="" name="select">
+					<option value="ihiu">iihiu</option>
+					<option value="azdzadzd">addzdz</option>
+				</select></p>
+				<br/>
+				<input id="submit" type="submit" value="submit" />
+			</form>
+		</div>
+	</body>
+</html>
