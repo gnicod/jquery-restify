@@ -16,6 +16,7 @@
 	function Restify(element,options){
 		this.options = $.extend( {}, defaults, options );
 		this.form = element;
+		this.json  = {};
 		this._defaults = defaults;
 		this._name = "restify";
 		this.init();		   
@@ -50,7 +51,6 @@
 
 		parseForm : function(){
 			var field = {};
-			var json  = {};
 			var _this = this;
 			$(this.form).find("input[type='text'],select,input[type='hidden'],input[type='password'],input[type='radio']:checked,textarea").each(function(){
 				if($.inArray(this.name,_this.options.excluded)<0){
@@ -71,15 +71,26 @@
 							field[na].push($(this).val());
 						}
 					}else{
-						field[this.name] = $(this).is(":checked") ? 1 : 0;
+						field[this.name] = $(this).is(":checked");
 					}
 				}
 			});
-			json[this.options.root] = field;
+			this.json[this.options.root] = field;
 			for(var field in this.options.append){
-				json[field] = this.options.append[field];
+				this.json[field] = this.options.append[field];
 			}
-			this.send(JSON.stringify(json));
+			this.preprocess();
+		},
+
+		preprocess : function(){
+			 //TODO optimize this ****
+			 if(this.options.preprocess!==undefined){
+				 for(var name in this.options.preprocess){
+					 var fn = this.options.preprocess[name];
+					 this.json[this.options.root][name]= fn(this.json[this.options.root][name]);
+				 }
+			 }
+			this.send(JSON.stringify(this.json));
 		},
 
 		send : function(json){
