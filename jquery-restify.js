@@ -100,7 +100,8 @@
 				url    : _this.options.url,
 				type   : _this.options.type,
 				data   : json
-			}).done(function(data){
+				dataType : "json"
+			}).always(function(data) {
 				_this.options.callback(data,json);
 			});
 		},
