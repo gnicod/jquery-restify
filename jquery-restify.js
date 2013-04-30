@@ -8,8 +8,7 @@
 		//ajax part
 		url      : "",
 		type     : "",
-		callback : function(json){
-			console.log(json);
+		callback : function(data,json){
 		}
 	};
 
@@ -101,7 +100,9 @@
 				url    : _this.options.url,
 				type   : _this.options.type,
 				data   : json
-			}).done(_this.options.callback(json));
+			}).done(function(data){
+				_this.options.callback(data,json);
+			});
 		},
 
 		isValid : function(){
