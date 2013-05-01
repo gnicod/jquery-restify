@@ -1,9 +1,8 @@
 var Browser = require("zombie");
 var assert = require("assert");
-
 // Load the page from localhost
 browser = new Browser();
-browser.visit("file:///home/ovski/DEV/jquery-restify/test/index.html", function () {
+browser.visit("file://"+__dirname+"/index.html", function () {
 
 	var jquery = browser.window.jQuery;
 
