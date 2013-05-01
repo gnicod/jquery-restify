@@ -1,0 +1,31 @@
+{
+  "name": "jquery-restify",
+  "version": "0.0.1",
+  "description": "A plugin to restify your form with a damn simple form validation framework",
+  "main": "jquery-restify.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/zombie.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gnicod/jquery-restify.git"
+  },
+  "keywords": [
+    "jquery",
+    "rest",
+    "form"
+  ],
+  "author": "gnicod",
+  "license": "Beerware",
+  "readmeFilename": "README.md",
+  "gitHead": "e2f5dd0026d49d555d7072a7913031a23d737995",
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.4.3",
+    "zombie": "~2.0.0-alpha15"
+  }
+}
