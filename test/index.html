@@ -1,7 +1,7 @@
 <html>
 	<head>
-		<script type="text/javascript" src="../jquery.js"></script>
-		<script type="text/javascript" src="../jquery-restify.js"></script>
+		<script type="text/javascript" src="../lib/jquery.js"></script>
+		<script type="text/javascript" src="../src/jquery-restify.js"></script>
 		<link rel="stylesheet" href="../jquery-restify.css" />
 		<title>test</title>
 		<script type="text/javascript">
@@ -9,7 +9,7 @@
 			var nameChck = function(elm){
 				return elm.val().length > 5;
 			};
-			var objToAppend = {"lol":["jj","hu"]};
+			var objToAppend = {"obj":["jj","hu"]};
 			$(document).ready(function(){
 				$('#formid').restify({
 					"fields":{
@@ -25,11 +25,12 @@
 					},
 					"append":{
 						"objToAp" : objToAppend
-					},
+					/*},
 					"preprocess":{
 						"check":function(obj){
 							return obj.join('');
 						}
+					*/
 					}
 			});
 		});
@@ -44,12 +45,12 @@
 
 	<div>
 		<form id="formid" action="/ajax" name="user" method="PUT">
-			<p><input id="field1" name="field1"  type="text" value="field1"/></p>
-			<p><input id="field2" name="field2" type="text" value="field2"/></p>
-			<p><input name="check[]" type="checkbox" value="aa"/>aa</p>
-			<p><input name="check[]" type="checkbox" value="bb"/>bb</p>
+			<p><input id="field1" name="field1"  type="text" value="field1value"/></p>
+			<p><input id="field2" name="field2" type="text" value="field2value"/></p>
+			<p><input name="check[]" type="checkbox" class="tocheck" value="aa" checked/>aa</p>
+			<p><input name="check[]" type="checkbox" class="tocheck" value="bb" checked/>bb</p>
 			<p><input name="check[]" type="checkbox" value="cc"/>cc</p>
-			<p><input name="bool" type="checkbox" value="cc"/>boolean</p>
+			<p><input name="bool" type="checkbox" class="tocheck" value="cc"/>boolean</p>
 			<p><input type="radio" name="isTest" value="1">Yes</p>
 			<p><input type="radio" name="isTest" value="0">No</p>
 			<p><select id="" name="select">

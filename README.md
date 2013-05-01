@@ -1,5 +1,6 @@
 jquery-restify
 ==============
+[![Build Status](https://travis-ci.org/gnicod/jquery-restify.png?branch=master)](https://travis-ci.org/gnicod/jquery-restify)
 
 A plugin to restify your form  with a damn simple form validation framework
 
@@ -22,7 +23,7 @@ $('#formid').restify();
 Options
 --------
 ###root
-Root element name. Default is the name of the form
+Root element name. Default is the ***name*** of the form
 ###url
 Url of the REST API. Default is the ***action*** parameter of the form
 ###type
@@ -33,6 +34,18 @@ array of string. Elements with name in this array will not be jsonify nor send
 callback function
 ###append
 object to append to json
+###preprocess
+example
+```javascript
+$('#formid').restify({
+	"preprocess":{
+		"field1":function(obj){
+			return "prepend:"+obj;
+		}
+	}
+}
+```
+
 
 Form validation
 -------

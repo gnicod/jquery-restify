@@ -76,7 +76,7 @@
 			});
 			this.json[this.options.root] = field;
 			for(var field in this.options.append){
-				this.json[field] = this.options.append[field];
+				this.json[this.options.root][field] = this.options.append[field];
 			}
 			this.preprocess();
 		},
