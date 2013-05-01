@@ -27,4 +27,14 @@ browser.visit("file://"+__dirname+"/index.html", function () {
       assert.equal(obj.user.objToAp.obj.length, 2);
     });
 
+		browser.evaluate("obj = '\"e\"'");
+		browser.fill("field1","").
+			pressButton("submit",function(){
+				hasClass = browser.evaluate("$('#field1').parent().hasClass('restify-err')");
+				errorMsg = browser.evaluate("$('#field1').next().html()");
+				console.log("Should return an error message if #field1 < 5 char");
+				assert.ok(hasClass);
+				assert.equal(errorMsg,"Should contains only alphanumeric caracters");
+			});
+
 });

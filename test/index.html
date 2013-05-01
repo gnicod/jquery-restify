@@ -14,7 +14,6 @@
 				$('#formid').restify({
 					"fields":{
 						"#field1": {
-							"required" : false,
 							"regexp":{"pattern":"[a-zA-Z0-9]","message":"Should contains only alphanumeric caracters"},
 							"custom":{"fn":"nameChck","message":"Should contains at least 5 caracters"},
 							"min-length":5
@@ -37,12 +36,6 @@
 </script>
 </head>
 <body>
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-
 	<div>
 		<form id="formid" action="/ajax" name="user" method="PUT">
 			<p><input id="field1" name="field1"  type="text" value="field1value"/></p>
