@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 		uglify: {
 			my_target: {
 				files: {
-					'jquery-restify.min.js': ['jquery-restify.js']
+					'src/jquery-restify.min.js': ['src/jquery-restify.js']
 				}
 			}
 		},
@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 				browser: false,
 				smarttabs:false
 			},
-			all: ['jquery-restify.js'],
+			all: ['src/jquery-restify.js'],
 			globals: {
 				jQuery: true
 			}
