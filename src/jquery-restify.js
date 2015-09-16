@@ -2,12 +2,15 @@
 	var defaults = {
 		//TODO reprendre tous les params  de la method $.ajax()
 		root     : "",
+		with_root     : true,
 		fields : {}, //de la forme "fields":{ "#name": { "message":"Doit etre full", "validator":"booleanFunctionName"} }
 		excluded : [],
 		append : [],
 		//ajax part
 		url      : "",
 		type     : "",
+        contentType :"application/json",
+        mimeType :"application/json",
 		callback : function(data,json){
 		}
 	};
@@ -28,7 +31,7 @@
 			if(this.options.btn!==undefined){
 				submitEl = $("#"+this.options.btn);
 			}
-			submitEl.live('click',function(event){
+			submitEl.on('click',function(event){
 				_this.form.find('.restify-msg').hide();
 				_this.form.find('.restify-wrap').removeClass("restify-err");
 				_this.parseForm(this.form,this.options);
@@ -74,9 +77,17 @@
 					}
 				}
 			});
-			this.json[this.options.root] = field;
+            if( this.options.with_root ){
+			    this.json[this.options.root] = field;
+            }else{
+			    this.json = field;
+            }
 			for(var field in this.options.append){
-				this.json[this.options.root][field] = this.options.append[field];
+                if( this.options.with_root ){
+				    this.json[this.options.root][field] = this.options.append[field];
+                }else{
+				    this.json[field] = this.options.append[field];
+                }
 			}
 			this.preprocess();
 		},
@@ -100,6 +111,8 @@
 				url    : _this.options.url,
 				type   : _this.options.type,
 				data   : json,
+                mimeType :_this.options.mimeType,
+                contentType :_this.options.contentType,
 				dataType : "json"
 			}).always(function(data) {
 				_this.options.callback(data,json);
