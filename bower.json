@@ -1,0 +1,21 @@
+{
+  "name": "jquery-restify",
+  "version": "0.1",
+  "homepage": "https://github.com/gnicod/jquery-restify",
+  "authors": [
+    "Gaetan Nicod <gnicod@adloox.com>"
+  ],
+  "description": "A plugin to restify your form with a damn simple form validation framework",
+  "main": "src/jquery-restify.min.js",
+  "keywords": [
+    "rest"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
